@@ -1,3 +1,5 @@
+% !TEX TS-program = xelatex
+
 % This is the LaTeX template
 % for "Constructions", a very simple
 % modification of the standard 
@@ -10,10 +12,20 @@
 % is used under the LaTeX Project 
 % Public License v1.3c.
 
+% Note that the file has to be compiled
+% in XeLaTeX! If you work in Overleaf,
+% XeLaTeX should already be selected 
+% (you can check this by taking a look at
+% Menu > Compiler). Some LaTeX editors
+% will also recognize the correct
+% compiler automatically because of
+% the "magic command" at the beginning
+% of this script.
+
 % to keep the present file readable,
 % packages & commands have been relocated
 % to localstuff.tex:
-\include{localstuff}
+\input{localstuff}
 
 
 % For the **running head**, please enter a 
@@ -42,11 +54,12 @@
 
 \hyphenation{
     hy-phe-na-tion
-    numb-ered
+    num-bered
 }
 
-
+\raggedbottom
 \begin{document}
+
 
 % make sure that first page doesn't
 % have running heads:
@@ -84,7 +97,7 @@
 \end{center}
 
 \begin{adjustwidth}{20pt}{20pt}
-\small \noindent This the article template for the journal ``Constructions". Its goal is to make it as easy as possible for authors to typeset their papers in \LaTeX. For users with limited \LaTeX experience, we recommend to use Overleaf (\url{https://www.overleaf.com}). To start working on your paper in Overleaf, just make a copy of this template and replace the text of this tutorial by the text of your paper.
+\small \noindent This the article template for the journal ``Constructions". Its goal is to make it as easy as possible for authors to typeset their papers in \LaTeX. For users with limited \LaTeX \  experience, we recommend using Overleaf (\url{https://www.overleaf.com}). To start working on your paper in Overleaf, just make a copy of this template and replace the text of this tutorial by the text of your paper.
 \end{adjustwidth}
 
 
@@ -112,7 +125,7 @@
     \end{verbatim}
     \item For linguistic examples, see below.
     \item Footnotes can be inserted using \verb!\footnote{...}!.\footnote{Duh!}
-    \item \LaTeX \ hyphenates automatically, and usually the hyphenation feature is pretty good. If you want to override the default hyphenation of a word, add it to the \verb!\babelhyphenation{}!\ word list towards the beginning of the main.tex document -- that's what I've done for the word \textit{numb-ered} a few bulletpoints above (just for expository reasons of course, not because I want to change English hyphenation rules...). If you have very long words, I recommend to insert a \textbf{soft hyphen}, i.e. a hyphen that is not shown unless there is a line break, as\-in\-this\-very\-long\-word. You can insert a soft hyphen by typing \verb!\-!, e.g. \verb!hy\-phe\-na\-tion!.
+    \item \LaTeX \ hyphenates automatically, and usually the hyphenation feature is pretty good. If you want to override the default hyphenation of a word, add it to the \verb!\hyphenation{}!\ word list towards the beginning of the main.tex document -- that's what I've done for the word \textit{numb-ered} a few bulletpoints above (just for expository reasons of course, not because I want to change English hyphenation rules...). If you have very long words, I recommend to insert a \textbf{soft hyphen}, i.e. a hyphen that is not shown unless there is a line break, as\-in\-this\-very\-long\-word. You can insert a soft hyphen by typing \verb!\-!, e.g. \verb!hy\-phe\-na\-tion!.
     
 \end{itemize}
 
@@ -171,26 +184,26 @@ Adding tables is, admittedly, one of the more challenging aspects of \LaTeX \ ty
 
 \noindent I recommend to use the \href{https://ctan.org/search?phrase=tabularx}{tabularx} package, which is a bit more complicated to use than the normal ``tabular" environment, but it gives you more flexibility in customizing the tables, and makes it easier to print it in text width. In the localstuff.tex file, I have defined the column types L (left-aligned), C (centered), and R (right-aligned) so you don't have to use the full commands that tabularx usually requires. In the simplest case, therefore, constructing a table is as easy as in the source code of \autoref{tab:my_first_table}. For more elaborate tables in which some rows and columns are merged, check the source code of \autoref{tab:my_complicated_table}.
 
+
 \begin{table}[H]
-\sffamily \begin{tabularx}{\textwidth} { 
-  | L | L | R | }
- \hline
- \rowcolor[gray]{.5}\multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\centering\relax}X|}{\textcolor{white}{Complicated example table}} \\
- \hline
- \rowcolor[gray]{.9} \textbf{Lorem ipsum} & \textbf{Example} & \textbf{Frequency} \\
- \hline
- Lorem  & Lorem ipsum dolor sit amet  &  42  \\
- \hline
- ipsum & bla bla blubb & 21 \\
-\hline
-\multicolumn{2}{|>{\hsize=\dimexpr2\hsize+2\tabcolsep+\raggedright\relax}X|}{\textbf{Sum}} & \textbf{63} \\
- \hline
-  \end{tabularx}
-    \caption{A more complicated table}
-    \label{tab:my_complicated_table}
     
-\vspace{-10pt}
+    \begin{tabularx}{1\textwidth}{| L | L |R |}
+    \hline
+         \rowcolor[gray]{.9} Col1 & Col2 & Col3 \\
+        \hline
+        blubb &  blibb & 2 \\
+        \hline
+        \multicolumn{2}{|>{\hsize=\dimexpr2\hsize+2\tabcolsep+1\arrayrulewidth\raggedright\relax}X |}{ Lorem ipsum dolor sit amet, } & bla\\\hline
+        \rowcolor[gray]{.8} \multicolumn{3}{|>{\hsize=\dimexpr3\hsize+4\tabcolsep+2\arrayrulewidth\centering\relax}X |}{ Lorem ipsum dolor sit amet, }\\
+        \hline
+        
+bla & blabb & 22 \\
+\hline
+    \end{tabularx}
+    \caption{A more compilcated table}
+    \label{tab:my_complicated_table}
 \end{table}
+
 \normalfont
 
 
