@@ -42,7 +42,7 @@
 \fancyhead[RO, LE]{\thepage}
 
 % Please enter the corresponding author(s) here:
-\newcommand{\correspondingauthor}[1]{Stefan Hartmann, University of Düsseldorf, hartmast@hhu.de}
+\newcommand{\correspondingauthor}[1]{Random Author, University of Somewhere, random.author@uni-somewhere.edu}
 
 
 % if you want to customize the
@@ -65,15 +65,18 @@
 % have running heads:
 \thispagestyle{plain}
 
-% insert title and author/s
-\begin{flushright}
-\small{\textit{Constructions}  \volume \ (\the\year)}
+% first page header:
+% DOI and Creative Commons license
+\newcolumntype{Y}{>{\raggedleft\arraybackslash}X}
 
-\small{doi 10.24338/cons-xxx}
+\noindent
+\begin{tabularx}{\textwidth}{XY}
+\multirow{2}{*}{\href{https://creativecommons.org/licenses/by/4.0/deed.en}{\includegraphics[width=0.4\linewidth]{Figures/cc-by-icon.png}}} & \small{\textit{Constructions} \volume \  (\the\year)} \\
+& \small{doi{10.24338/cons-xxx}} \\
+\end{tabularx}
 
-\end{flushright}
 
-\vspace{2pt}
+\vspace{30pt}
 \begin{center}
     \LARGE\headingfont{\textbf{Constructing a paper: \linebreak The article template for "Constructions"}}
 \end{center}
@@ -81,10 +84,10 @@
 \begin{center}
 \vspace{4pt}
 \large
-    Stefan Hartmann\textsuperscript{1}, Random Author\textsuperscript{2} \& Another Random Author\textsuperscript{2}
+    Some Author\textsuperscript{1}, Another Author\textsuperscript{2} \& Yet Another Author\textsuperscript{2}
     
 \small
-   \textsuperscript{1} University of Düsseldorf \textsuperscript{2} Random University 
+   \textsuperscript{1} University of Somewhere \textsuperscript{2} Random University 
 
 \end{center}
 
@@ -125,7 +128,7 @@
     \end{verbatim}
     \item For linguistic examples, see below.
     \item Footnotes can be inserted using \verb!\footnote{...}!.\footnote{Duh!}
-    \item \LaTeX \ hyphenates automatically, and usually the hyphenation feature is pretty good. If you want to override the default hyphenation of a word, add it to the \verb!\hyphenation{}!\ word list towards the beginning of the main.tex document -- that's what I've done for the word \textit{numb-ered} a few bulletpoints above (just for expository reasons of course, not because I want to change English hyphenation rules...). If you have very long words, I recommend to insert a \textbf{soft hyphen}, i.e. a hyphen that is not shown unless there is a line break, as\-in\-this\-very\-long\-word. You can insert a soft hyphen by typing \verb!\-!, e.g. \verb!hy\-phe\-na\-tion!.
+    \item \LaTeX \ hyphenates automatically, and usually the hyphenation feature is pretty good. If you want to override the default hyphenation of a word, add it to the \verb!\hyphenation{}!\ word list towards the beginning of the main.tex document -- that's what I've done for the word \textit{numb-ered} a few bulletpoints above (just for expository reasons of course, not because I want to change English hyphenation rules...). If you have very long words, we recommend to insert a \textbf{soft hyphen}, i.e. a hyphen that is not shown unless there is a line break, as\-in\-this\-very\-long\-word. You can insert a soft hyphen by typing \verb!\-!, e.g. \verb!hy\-phe\-na\-tion!.
     
 \end{itemize}
 
@@ -182,7 +185,7 @@ Adding tables is, admittedly, one of the more challenging aspects of \LaTeX \ ty
     \label{tab:my_first_table}
 \end{table}
 
-\noindent I recommend to use the \href{https://ctan.org/search?phrase=tabularx}{tabularx} package, which is a bit more complicated to use than the normal ``tabular" environment, but it gives you more flexibility in customizing the tables, and makes it easier to print it in text width. In the localstuff.tex file, I have defined the column types L (left-aligned), C (centered), and R (right-aligned) so you don't have to use the full commands that tabularx usually requires. In the simplest case, therefore, constructing a table is as easy as in the source code of \autoref{tab:my_first_table}. For more elaborate tables in which some rows and columns are merged, check the source code of \autoref{tab:my_complicated_table}.
+\noindent We recommend to use the \href{https://ctan.org/search?phrase=tabularx}{tabularx} package, which is a bit more complicated to use than the normal ``tabular" environment, but it gives you more flexibility in customizing the tables, and makes it easier to print it in text width. In the localstuff.tex file, we have defined the column types L (left-aligned), C (centered), and R (right-aligned) so you don't have to use the full commands that tabularx usually requires. In the simplest case, therefore, constructing a table is as easy as in the source code of \autoref{tab:my_first_table}. For more elaborate tables in which some rows and columns are merged, check the source code of \autoref{tab:my_complicated_table}.
 
 
 \begin{table}[H]
@@ -206,6 +209,9 @@ bla & blabb & 22 \\
 
 \normalfont
 
+\section{Special characters}
+
+From 2025 onwards, \textit{Constructions} uses the open font \href{https://software.sil.org/charis/}{Charis SIL} by default, which supports a broad array of Unicode characters. With the \verb!\symbol{...}! command, you can easily add more Unicode characters using a font of your choice, e.g. \verb!{\fontspec{Symbola}\symbol{"1F5A4}}! will be displayed as {\fontspec{Symbola}\symbol{"1F5A4}}. 
 
 \section{Citations and references}
 
@@ -214,10 +220,10 @@ bla & blabb & 22 \\
 For inserting citations, use \LaTeX's citation syntax:
 
 \begin{itemize}
-    \item Use \verb!\citep{...}! for inserting citations in parantheses, e.g. \citep{Goldberg2003}.
-    \item Use \verb!\citet{...}! to insert citations in the format Author/s (Year), as in \citet{Goldberg1995}.
-    \item Use \verb!\citeauthor{...}! and \verb!\citeyear{...}! if you just want to cite the author or the year, without parantheses. This can be helpful if you cite something within parantheses (as in this example, see \citeauthor{croftRadicalConstructionGrammar2001} \citeyear{croftRadicalConstructionGrammar2001}).
-    \item If you want to use a possessive 's in references, you can use the custom command \verb!\citegen{...}! defined in the localstuff.tex file, as in: \citegen{Goldberg1995} definition of constructions.
+    \item Use \verb!\citep{...}! for inserting citations in parantheses, e.g. \citep{Example2}.
+    \item Use \verb!\citet{...}! to insert citations in the format Author/s (Year), as in \citet{Example2}.
+    \item Use \verb!\citeauthor{...}! and \verb!\citeyear{...}! if you just want to cite the author or the year, without parantheses. This can be helpful if you cite something within parantheses (as in this example, see \citeauthor{Example1} \citeyear{Example1}).
+    \item If you want to use a possessive 's in references, you can use the custom command \verb!\citegen{...}! defined in the localstuff.tex file, as in: \citegen{Example1} definition of constructions.
 \end{itemize}
 
 \subsection*{Troubleshooting}
@@ -225,11 +231,36 @@ For inserting citations, use \LaTeX's citation syntax:
 If there are problems with the bibliography, this can have several reasons:
 
 \begin{itemize}
-    \item Some Zotero plugins (like Better BibTeX) change the ``year" field in the BibTeX entry to ``date". In this case, the year will unfortunately not be displayed.
-    \item If you want to keep sentence-internal capitals in the citations (e.g. when quoting German titles, such as \citeauthor{hartmannSchemaUndInstanz2021} \citeyear{hartmannSchemaUndInstanz2021}), make sure that the relevant words are enclosed in curly brackets. If you export the BibTeX entries from Zotero, you usually won't have to worry because it does so automatically.
+    \item Some Zotero plugins (like Better BibTeX) change the ``Year" field in the BibTeX entry to ``Date". In this case, you'll have to change all instances of ``Date" to ``Year" in the bibliography file.
+    \item If you want to keep sentence-internal capitals in the citations (e.g. when quoting German titles, such as \citeauthor{Example3} \citeyear{Example3}), make sure that the relevant words are enclosed in curly brackets. If you export the BibTeX entries from Zotero, you usually won't have to worry because it does so automatically.
 \end{itemize}
 
 
+\section*{Obligatory declarations}
+
+To meet the requirements of pertinent publication ethics standards, we kindly ask you to add the following declarations at the end of your paper:
+
+\begin{itemize}
+    \item \textbf{Conflict of interest statement:} Typically, there will be no conflict of interest to state. If this is the case, just write something like ``The author/s has/have no competing interests to declare."
+    \item \textbf{Data availability statement:} If you have analyzed data, please add a link to a public repository in line with our \href{https://constructions.journals.hhu.de/about}{Open Data Policy}. 
+    \item \textbf{Ethics statement:} If you work with sensitive data (including, but not limited to, experiments involving underage participants or data from clinical populations), please add an ethics statement. 
+
+    
+\end{itemize}
+
+\section*{Conflict of interest statement}
+
+The authors declare none. % change if necessary
+
+\section*{Data availability statement}
+
+The data and analysis scripts for the present paper are available at [[ADD LINK]].
+
+\section*{Ethics statement}
+
+\textit{(Delete if not applicable)}
+
+\noindent The present study was reviewed and approved by [[Full name and affiliation of ethics committee, date and/or reference number of ethics vote]]. All participants provided their written informed consent to participate in this study.
 
 \bibliography{bibliography}
 

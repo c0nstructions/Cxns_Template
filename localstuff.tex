@@ -4,7 +4,6 @@
 % PACKAGES %
 %%%%%%%%%%%%
 
-\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{tabularx, colortbl}
 % \usepackage[english]{babel}
@@ -29,7 +28,8 @@
 	titling,
 	fontspec,
 	changepage,
-	float
+	float,
+    multirow
 }
 
 % set bibliography style
@@ -40,10 +40,9 @@
 \newfontfamily\headingfont[]{IBM Plex Sans}
 
 % main font:
- \setmainfont{BaskervilleF}
-%\usepackage{tgschola} % the standard font
+\usepackage{CharisSIL}
 
-
+% packages:
 \usepackage[]{titlesec}
 \usepackage[hang]{footmisc}
 \usepackage[nocenter]{qtree}
