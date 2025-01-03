@@ -9,9 +9,13 @@
 % \usepackage[english]{babel}
 \usepackage[margin=3cm]{geometry}
 % \usepackage{newtxtext,newtxmath}
+\usepackage{xcolor}
+\definecolor{ochre}{RGB}{204, 119, 34}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black,filecolor=magenta,urlcolor=ochre]{hyperref}
+
+\usepackage[final,nopatch=footnote]{microtype}
 
 \usepackage{
-	microtype,
 	enumitem,
 	multicol,
 	multirow,
@@ -22,7 +26,6 @@
 	natbib,
 	amsmath,
 	booktabs,
-	xcolor,
 	calculator,
 	verbatim,
 	titling,
@@ -31,6 +34,13 @@
 	float,
     multirow
 }
+
+% Paper license
+\usepackage[
+    type={CC},
+    modifier={by},
+    version={4.0},
+]{doclicense}
 
 % set bibliography style
 \bibliographystyle{unified}
@@ -49,8 +59,7 @@
 \usepackage[normalem]{ulem}
 \usepackage{graphicx}
 \usepackage{fancyhdr}
-\definecolor{ochre}{RGB}{204, 119, 34}
-\usepackage[colorlinks=true,linkcolor=black,citecolor=black,filecolor=magenta,urlcolor=ochre]{hyperref}
+
 
 
 \setlength{\bibsep}{0.0pt}

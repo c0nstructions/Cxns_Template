@@ -57,6 +57,7 @@
     num-bered
 }
 
+
 \raggedbottom
 \begin{document}
 
@@ -71,10 +72,9 @@
 
 \noindent
 \begin{tabularx}{\textwidth}{XY}
-\multirow{2}{*}{\href{https://creativecommons.org/licenses/by/4.0/deed.en}{\includegraphics[width=0.4\linewidth]{Figures/cc-by-icon.png}}} & \small{\textit{Constructions} \volume \  (\the\year)} \\
+\multirow{2}{*}{\doclicenseImage[imagewidth=0.5\linewidth]} & \small{\textit{Constructions} \volume \  (\the\year)} \\
 & \small{doi{10.24338/cons-xxx}} \\
 \end{tabularx}
-
 
 \vspace{30pt}
 \begin{center}
@@ -118,6 +118,7 @@
     \item If you want to use \textbf{boldface}, use the command \verb!\textbf{...}!
     \item For adding `single' and ``double" quotes, please use a single or double grave accent (\verb!`! or \verb!``!) for opening the quote and the apostrophe \verb!'! or the regular double quote \verb!"! to close it.
     \item To start a new \textbf{section}, use \verb!\section{...}! If the section should not be numbered (which is usually the case for Acknowledgment sections and the references), add an asterisk: \verb!\section*{...}!
+    \item Optionally you can add a label to the section using \verb!\label! and then refer to it using the \verb!\ref! command, e.g. \\ \verb!\section{Linguistic examples} \label{sec:linguex}! \\ assigns the label \textit{linguex} to Section \ref{sec:linguex}, and \verb!\ref{sec:linguex}! will show up as \ref{sec:linguex}.
     \item If you want to make a bulletpoint list like the one you're reading right now, use:
     \begin{verbatim}
         \begin{itemize}
@@ -133,7 +134,7 @@
 \end{itemize}
 
 
-\section{Linguistic examples}
+\section{Linguistic examples} \label{sec:linguex}
 
 For linguistic examples, we use the ``linguex" package. The package is relatively easy to use, see the manual for examples: \url{https://ftp.rrze.uni-erlangen.de/ctan/macros/latex/contrib/linguex/doc/linguex-doc.pdf}. Just insert \verb!\ex.! to start an example, and use \verb!\\! for line breaks. You can refer to examples like example \ref{ex:myExample} below by adding labels to the individual examples using the \verb!\label{...}! command and referring to the label you chose via \verb!\ref{the_label}!. In this way, you can also refer to sub-examples like \ref{ex:myExamplea} and \ref{ex:myExampleb}.
  
@@ -167,7 +168,10 @@ Inserting figures is easy, while it can be a bit harder to place them where you 
     \label{fig:my_second_figure}
 \end{figure}
 
-\newpage
+\subsection*{Reusing figures} \label{sec:reusing}
+
+If you reuse figures from published work, including your own, please make sure that you are allowed to do so. In most cases, you will need to obtain written permission from the copyright holder (usually the publisher) to re-use figures, unless the original paper has been published under an open license such as CC-BY. We generally recommend to double-check if re-using the figure is actually necessary. If it is, please make sure to obtain written permission for re-using the figure. When re-using figures that cannot be published under a creative commons license, please add a short statement to the license information at the bottom of the paper, e.g. ``Figure x from Author (Year: page), re-used by permission from Calisota University Press, is excluded from this license."
+
 
 \section{Tables}
 
@@ -235,7 +239,6 @@ If there are problems with the bibliography, this can have several reasons:
     \item If you want to keep sentence-internal capitals in the citations (e.g. when quoting German titles, such as \citeauthor{Example3} \citeyear{Example3}), make sure that the relevant words are enclosed in curly brackets. If you export the BibTeX entries from Zotero, you usually won't have to worry because it does so automatically.
 \end{itemize}
 
-
 \section*{Obligatory declarations}
 
 To meet the requirements of pertinent publication ethics standards, we kindly ask you to add the following declarations at the end of your paper:
@@ -257,10 +260,22 @@ The authors declare none. % change if necessary
 The data and analysis scripts for the present paper are available at [[ADD LINK]].
 
 \section*{Ethics statement}
-
 \textit{(Delete if not applicable)}
 
 \noindent The present study was reviewed and approved by [[Full name and affiliation of ethics committee, date and/or reference number of ethics vote]]. All participants provided their written informed consent to participate in this study.
+
+\section*{License}
+\doclicenseIcon \doclicenseText
+
+\noindent \textit{Constructions} uses the CC-BY (``By Attribution") license by default, i.e. everyone can copy, share, and build upon your paper, given that they give proper attribution. If you prefer a more restrictive license, you can change it in the localstuff.tex file, e.g. to
+\begin{itemize}
+    \item CC-BY-SA (``Share alike"), i.e. any derivative work has to use the same or a compatible license;
+    \item CC-BY-SA-ND (``No derivatives"), i.e. the work has to be shared under the same or a compatible license, and derivative works such as translations are excluded.
+\end{itemize}
+
+\noindent See the \href{https://creativecommons.org/}{Creative Commons website} for more information about the different licenses.
+
+If necessary, please add statements about elements that are exluded from the CC license as described in Section \ref{sec:reusing}.
 
 \bibliography{bibliography}
 
